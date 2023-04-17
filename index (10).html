@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Guess the Secret Letter</title>
+
+</head>
+
+<body>
+  <h1>Guess the Secret Letter!</h1>
+
+  <script>
+    //all letters in array
+    var abc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+    //function that picks one of the letter from the array and returns it
+    function generateSecretLetter() {
+      return abc[Math.floor(Math.random() * abc.length)];
+    }
+
+    //generate secret letter randomly first time
+    var secret = generateSecretLetter();
+
+    //add key press event listener to the body
+    document.body.addEventListener('keypress', function (event) {
+
+      //get pressed letter lower cased
+      var letter = event.key.toLowerCase();
+
+      //check if secret letter was pressed
+      if (letter == secret) {
+        //create h3 element
+        var h3 = document.createElement('h3');
+
+        //add text to it
+        h3.textContent = "SECRET KEY PRESSED " + letter;
+
+        //add h3 element to the body 
+        document.body.appendChild(h3);
+
+        //generate next secret letter
+        secret = generateSecretLetter();
+      }
+
+    });
+  </script>
+</body>
+
+</html>
